@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ma Peinte</title>
+    <script src="jquery.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="abso">
+        <div id="none">
+            <div id="line1"></div>
+            <div id="line2"></div>
+            <p id="mash">Welcome on my Paint</p>
+        </div>
+        <div id="imgMDR"></div>
+        <div id="imgLol"></div>
+    </div>
+    <div id="container">
+        <canvas id="can" width="1920" height="900"></canvas>
+        <canvas id="canSIM" width="1920" height="900"></canvas>
+        <canvas id="canLine" width="1920" height="900"></canvas>
+        <div id="tools">
+            <select id="toolSelector">
+                <option value="pinceau" selected>Pinceau</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="ligne">Ligne</option>
+                <option value="cercle">Cercle</option>
+                <option value="gomme">Gomme</option>
+            </select>
+            <button id="vide">Vide</button>
+            <button id="plein">Plein</button>
+            <button id="symetrie">Symetrie</button>
+            <a id="save" title="save" download="MyCanvas">Save As</a>
+            <div id="saved"></div>
+            <div id="range">
+                <p>min : 1</p>
+                <input type="range" min="1" max="50" value="5" id="taille">
+                <output id="value"></output>
+                <p>max : 50</p>
+            </div>
+        </div>
+        <div id="container-colors">
+            <ul id="couleurs">
+                <li><a href="#" data-couleur="#ffffff">Blanc</a></li>
+                <li><a href="#" data-couleur="#F0FFF0">Honey Dew</a></li>
+                <li><a href="#" data-couleur="#F5FFFA">Mint Cream</a></li>
+                <li><a href="#" data-couleur="#F0FFFF">Azure</a></li>
+                <li><a href="#" data-couleur="#F0F8FF">Alice Blue</a></li>
+                <li><a href="#" data-couleur="#F8F8FF">Ghost White</a></li>
+                <li><a href="#" data-couleur="#DCDCDC">Gainsboro</a></li>
+                <li><a href="#" data-couleur="#A9A9A9">Dark Brey</a></li>
+                <li><a href="#" data-couleur="#808080">Gray</a></li>
+                <li><a href="#" data-couleur="#000000">Black</a></li>
+                <li><a href="#" data-couleur="#B0E0E6">Powder Blue</a></li>
+                <li><a href="#" data-couleur="#ADD8E6">Light Blue</a></li>
+                <li><a href="#" data-couleur="#87CEEB">Sky Blue</a></li>
+                <li><a href="#" data-couleur="#00BFFF">Deep Sky Blue</a></li>
+                <li><a href="#" data-couleur="#4169E1">Royal Blue</a></li>
+                <li><a href="#" data-couleur="#0000FF">Blue</a></li>
+                <li><a href="#" data-couleur="#191970">Midnight Blue</a></li>
+                <li><a href="#" data-couleur="#00FA9A">Medium Sping Green</a></li>
+                <li><a href="#" data-couleur="#00FF7F">Spring Green</a></li>
+                <li><a href="#" data-couleur="#3CB371">Medium Sea Green</a></li>
+                <li><a href="#" data-couleur="#2E8B57">Sea Green</a></li>
+                <li><a href="#" data-couleur="#008000">Green</a></li>
+                <li><a href="#" data-couleur="#6B8E23">Olive Drab</a></li>
+                <li><a href="#" data-couleur="#006400">Dark Green</a></li>
+                <li><a href="#" data-couleur="#F5F5DC">Beige</a></li>
+                <li><a href="#" data-couleur="#FAFAD2">Light Golden Rod Yellow</a></li>
+                <li><a href="#" data-couleur="#EEEBAA">Pale Golden Rod</a></li>
+                <li><a href="#" data-couleur="#FFFF00">Yellow</a></li>
+                <li><a href="#" data-couleur="#FFA500">Orange</a></li>
+                <li><a href="#" data-couleur="#FF8C00">Dark Orange</a></li>
+                <li><a href="#" data-couleur="#FF4500">Orange Red</a></li>
+                <li><a href="#" data-couleur="#B8860B">Dark Golden Rod</a></li>
+                <li><a href="#" data-couleur="#FFE4C4">Bisque</a></li>
+                <li><a href="#" data-couleur="#FFE4B5">Moccasin</a></li>
+                <li><a href="#" data-couleur="#FFA07A">Light Salmon</a></li>
+                <li><a href="#" data-couleur="#FA8072">Salmon</a></li>
+                <li><a href="#" data-couleur="#FF7F50">Coral</a></li>
+                <li><a href="#" data-couleur="#CD5C5C">Indian Red</a></li>
+                <li><a href="#" data-couleur="#DC143C">Cimson</a></li>
+                <li><a href="#" data-couleur="#A52A2A">Brown</a></li>
+                <li><a href="#" data-couleur="#B22222">Fire Brick</a></li>
+                <li><a href="#" data-couleur="#FFDAB9">Peach Puff</a></li>
+                <li><a href="#" data-couleur="#F5DEB3">Wheat</a></li>
+                <li><a href="#" data-couleur="#F4A460">Sandy Brown</a></li>
+                <li><a href="#" data-couleur="#DAA520">Goldenrod</a></li>
+                <li><a href="#" data-couleur="#B8860B">Dark Goldenrod</a></li>
+                <li><a href="#" data-couleur="#CD853F">Peru</a></li>
+                <li><a href="#" data-couleur="#FF6347">Tomato</a></li>
+                <li><a href="#" data-couleur="#FF0000">Red</a></li>
+                <li><a href="#" data-couleur="#D2691E">Chocolate</a></li>
+                <li><a href="#" data-couleur="#800000">Maroon</a></li>
+                <li><a href="#" data-couleur="#FFC0CB">Pink</a></li>
+                <li><a href="#" data-couleur="#FFB6C1">Light Pink</a></li>
+                <li><a href="#" data-couleur="#DDA0DD">Plum</a></li>
+                <li><a href="#" data-couleur="#DA70D6">Orchid</a></li>
+                <li><a href="#" data-couleur="#BA55D3">Medium Orchid</a></li>
+                <li><a href="#" data-couleur="#9932CC">Dark Orchid</a></li>
+                <li><a href="#" data-couleur="#8A2BE2">Blue violet</a></li>
+                <li><a href="#" data-couleur="#D87093">Pale Violet Red</a></li>
+                <li><a href="#" data-couleur="#FF00FF">Magenta</a></li>
+                <li><a href="#" data-couleur="#FF1493">Deep Pink</a></li>
+                <li><a href="#" data-couleur="#D02090">Violet Red</a></li>
+                <li><a href="#" data-couleur="#9400D3">Dark violet</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="effect.js"></script>
+    <script src="main2.js"></script>
+</body>
+</html>
